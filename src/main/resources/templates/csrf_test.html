@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/r/r4" method="post">
+<!--
+    csrf防护，在同一浏览器，不同窗口打开，对于get提交的页面可以查看，、
+    对于post等要对数据做改变的操作，需在页面加 第一行代码 每个窗口的token
+    都是唯一的，保存在session中，在页面操作时，服务器端会校验session中的token
+    和该页面的token是否一致
+-->
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+
+    <div><input type="text" name="username" placeholder="用户名"></div>
+    <div><input type="password" name="password" placeholder="密码"></div>
+    <div><button type="submit">修改</button></div>
+</form>
+
+</body>
+</html>
